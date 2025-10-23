@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Castle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="1200" height="800"></canvas>
+        
+        <!-- Game UI Overlays -->
+        <div class="game-ui">
+            <!-- Health bars -->
+            <div class="health-bars">
+                <div class="player-info player1">
+                    <h3>Tanjiro</h3>
+                    <div class="health-bar-container">
+                        <div class="health-bar" id="player1-health"></div>
+                    </div>
+                    <div class="stats">
+                        <span>HP: <span id="player1-hp">100</span></span>
+                        <span>Wins: <span id="player1-wins">0</span></span>
+                    </div>
+                </div>
+                
+                <div class="player-info player2">
+                    <h3>Demon</h3>
+                    <div class="health-bar-container">
+                        <div class="health-bar" id="player2-health"></div>
+                    </div>
+                    <div class="stats">
+                        <span>HP: <span id="player2-hp">100</span></span>
+                        <span>Wins: <span id="player2-wins">0</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game title -->
+            <div class="game-title">
+                <div>INFINITY CASTLE</div>
+                <div class="subtitle">GOA</div>
+            </div>
+            
+            <!-- Game messages -->
+            <div class="game-message" id="gameMessage"></div>
+            
+            <!-- Pause menu -->
+            <div class="pause-menu" id="pauseMenu">
+                <h2>PAUSED</h2>
+                <p>Press ENTER to resume</p>
+            </div>
+            
+            <!-- KO screen -->
+            <div class="ko-screen" id="koScreen">
+                <h2 id="winnerText"></h2>
+                <p>Press ENTER for new game</p>
+            </div>
+        </div>
+        
+        <!-- Controls info -->
+        <div class="controls-info">
+            <div class="player-controls">
+                <h4>Tanjiro Controls</h4>
+                <p>Move: ← → | Jump: ↑ | Attack: SPACE</p>
+            </div>
+            <div class="player-controls">
+                <h4>Game Info</h4>
+                <p>Fight against the AI-controlled Demon!</p>
+            </div>
+            <div class="game-controls">
+                <p>Pause: ESC | Restart: ENTER</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Audio elements -->
+    <audio id="bgMusic" loop>
+        <source src="demon-slayer-main/resources/audio/fight.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="swordSound">
+        <source src="demon-slayer-main/resources/audio/sword.wav" type="audio/wav">
+    </audio>
+    <audio id="magicSound">
+        <source src="demon-slayer-main/resources/audio/magic.wav" type="audio/wav">
+    </audio>
+    <audio id="koSound">
+        <source src="demon-slayer-main/resources/audio/CUET.wav" type="audio/wav">
+    </audio>
+    
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gameCanvas {
+    border: 3px solid #333;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.game-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Health bars */
+.health-bars {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 80px; /* Add space for the title */
+}
+
+.player-info {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 400px;
+}
+
+.player-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.health-bar-container {
+    width: 100%;
+    height: 30px;
+    background: #333;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.health-bar {
+    height: 100%;
+    background: linear-gradient(to right, #00ff00, #00cc00);
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.stats span {
+    color: #ffff00;
+}
+
+/* Game title */
+.game-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.game-title > div:first-child {
+    font-size: 42px;
+    color: #E41C17;
+    text-shadow: 3px 3px 0 #000, 5px 5px 10px rgba(228, 27, 23, 0.5);
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Arial Black', sans-serif;
+}
+
+.game-title .subtitle {
+    font-size: 28px;
+    color: #FFD700;
+    text-shadow: 2px 2px 0 #000, 3px 3px 8px rgba(255, 215, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 8px;
+    margin-top: -5px;
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Game messages */
+.game-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    color: #E41C17;
+    text-shadow: 3px 3px 0 #000;
+    font-weight: bold;
+}
+
+/* Pause menu */
+.pause-menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 50px;
+    border-radius: 20px;
+    border: 3px solid #E41C17;
+}
+
+.pause-menu h2 {
+    font-size: 100px;
+    color: #E41C17;
+    margin-bottom: 20px;
+    letter-spacing: 10px;
+}
+
+.pause-menu p {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* KO Screen */
+.ko-screen {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.ko-screen h2 {
+    font-size: 50px;
+    color: #ff0000;
+    margin: 20px 0;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.ko-screen p {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Controls info */
+.controls-info {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #E41C17;
+    box-shadow: 0 0 20px rgba(228, 27, 23, 0.3);
+}
+
+.player-controls, .game-controls {
+    text-align: center;
+}
+
+.player-controls h4 {
+    color: #FFD700;
+    margin-bottom: 8px;
+    font-size: 20px;
+    text-shadow: 2px 2px 0 #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.player-controls p, .game-controls p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Responsive design */
+@media (max-width: 1250px) {
+    #gameCanvas {
+        width: 100vw;
+        height: auto;
+        max-width: 1200px;
+    }
+    
+    .player-info {
+        min-width: 300px;
+        padding: 10px;
+    }
+    
+    .player-info h3 {
+        font-size: 20px;
+    }
+    
+    .stats {
+        font-size: 14px;
+    }
+}
