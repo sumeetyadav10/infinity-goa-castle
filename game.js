@@ -101,8 +101,8 @@ class Fighter {
         
         // Set sprite sources based on character
         const basePath = this.characterType === 'demon' ? 
-            'demon-slayer-main/resources/images/characters/fighter2/Sprites/' :
-            'demon-slayer-main/resources/images/characters/raiden/Sprites/';
+            'resource/resources/images/characters/fighter2/Sprites/' :
+            'resource/resources/images/characters/raiden/Sprites/';
             
         this.animations.idle.image.src = basePath + 'Idle.png';
         this.animations.run.image.src = basePath + 'Run.png';

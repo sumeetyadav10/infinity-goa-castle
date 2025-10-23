@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Test</title>
+</head>
+<body>
+    <h1>Testing Game Assets</h1>
+    <div id="status"></div>
+    <canvas id="testCanvas" width="800" height="600" style="border: 1px solid black;"></canvas>
+    
+    <script>
+        const status = document.getElementById('status');
+        const canvas = document.getElementById('testCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Test loading an image
+        const testImg = new Image();
+        testImg.onload = () => {
+            status.innerHTML += '<p style="color: green;">✓ Background image loaded</p>';
+            ctx.drawImage(testImg, 0, 0, canvas.width, canvas.height);
+        };
+        testImg.onerror = () => {
+            status.innerHTML += '<p style="color: red;">✗ Failed to load background image</p>';
+        };
+        testImg.src = 'image.png';
+        
+        // Test loading a sprite
+        const sprite = new Image();
+        sprite.onload = () => {
+            status.innerHTML += '<p style="color: green;">✓ Sprite loaded</p>';
+        };
+        sprite.onerror = () => {
+            status.innerHTML += '<p style="color: red;">✗ Failed to load sprite</p>';
+        };
+        sprite.src = 'resource/resources/images/characters/raiden/Sprites/Idle.png';
+        
+        // Check if game.js exists
+        fetch('game.js')
+            .then(() => status.innerHTML += '<p style="color: green;">✓ game.js found</p>')
+            .catch(() => status.innerHTML += '<p style="color: red;">✗ game.js not found</p>');
+    </script>
+</body>
+</html>

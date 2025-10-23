@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Castle - Debug</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #gameCanvas {
+            border: 2px solid red;
+            display: block;
+            margin: 20px auto;
+        }
+        #debug {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 10px;
+        }
+        .error { color: #ff4444; }
+        .success { color: #44ff44; }
+        .info { color: #ffff44; }
+    </style>
+</head>
+<body>
+    <div id="debug">
+        <h1>Infinity Castle - Debug Mode</h1>
+        <div id="status"></div>
+    </div>
+    
+    <canvas id="gameCanvas" width="1200" height="800"></canvas>
+    
+    <script>
+        const debugLog = (msg, type = 'info') => {
+            const status = document.getElementById('status');
+            const p = document.createElement('p');
+            p.className = type;
+            p.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            status.appendChild(p);
+            console.log(msg);
+        };
+
+        debugLog('Starting game initialization...');
+
+        // Check if canvas is available
+        const canvas = document.getElementById('gameCanvas');
+        if (!canvas) {
+            debugLog('ERROR: Canvas not found!', 'error');
+        } else {
+            debugLog('Canvas found successfully', 'success');
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+                debugLog('ERROR: Could not get canvas context!', 'error');
+            } else {
+                debugLog('Canvas context acquired', 'success');
+                
+                // Draw something to test
+                ctx.fillStyle = '#333';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#fff';
+                ctx.font = '48px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('INFINITY CASTLE', canvas.width/2, 100);
+                ctx.font = '24px Arial';
+                ctx.fillText('Debug Mode - Loading...', canvas.width/2, 150);
+            }
+        }
+
+        // Test loading game.js
+        const script = document.createElement('script');
+        script.src = 'game.js';
+        script.onload = () => {
+            debugLog('game.js loaded successfully', 'success');
+        };
+        script.onerror = () => {
+            debugLog('ERROR: Failed to load game.js', 'error');
+        };
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
